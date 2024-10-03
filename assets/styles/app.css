@@ -1,3 +1,20 @@
+@font-face {
+    font-family: 'Barlow';
+    src: url('../font/BarlowCondensed-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.uk-navbar-nav .uk-active a{
+    font-family: 'Barlow';
+    font-size: 20px;
+}
 body {
-    background-color: skyblue;
+    min-height: 85vh;
+}
+textarea{
+    height: 500px;
+}
+a:hover{
+    text-decoration: none;
+    opacity: 60%;
 }

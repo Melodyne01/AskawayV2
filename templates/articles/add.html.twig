@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+<title>Askaway | Admin</title>
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block body %}
+<section>
+    <form class="uk-grid-small uk-padding" method="post" action="{{ path('app_article_create') }}" enctype="multipart/form-data" uk-grid>
+        {{ form_start(form) }}
+            <div class="uk-width-1-1">
+                {% if form_errors(form.title) %}
+                    <div class="formError">{{form_errors(form.title)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        <span class="uk-form-icon" uk-icon="icon: tag"></span>
+                        {{ form_widget(form.title) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                {% if form_errors(form.image) %}
+                    <div class="formError">{{form_errors(form.image)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.image) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                {% if form_errors(form.text) %}
+                    <div class="formError">{{ form_errors(form.text) }}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.text) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                {% if form_errors(form.introduction) %}
+                    <div class="formError">{{form_errors(form.introduction)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.introduction) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                {% if form_errors(form.category) %}
+                    <div class="formError">{{form_errors(form.category)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.category) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
+                {% if form_errors(form.online) %}
+                    <div class="formError">{{form_errors(form.online)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.online) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-panel uk-light uk-margin-small-top">
+                <p>* : champs requis</p>
+            </div>
+            <div class="uk-width-1-1">
+                <button type="submit" class="uk-button uk-width-1-1 uk-margin-small-bottom">Ajouter mon article</button>
+            </div>
+        {{ form_end(form) }}
+    </form>
+</section>
+{% endblock %}

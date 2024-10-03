@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <title>Askaway | {{article.title}}</title>
+    <meta name="robots" content="index">
+{% endblock %}
+
+{% block body %}
+<nav aria-label="Breadcrumb">
+    <ul class="uk-breadcrumb">
+        <li><a href="{{path('home')}}">Home</a></li>
+        <li><a href="{{path('app_categories')}}">{{article.category}}</a></li>
+        <li><span aria-current="page">{{article.title}}</span></li>
+    </ul>
+</nav>
+
+<div class="uk-section-default uk-padding-remove-left uk-padding-remove-right uk-padding-remove-top uk-padding">
+    <div class="uk-section uk-height-large uk-light uk-background-cover" style="background-image: url({{ asset('/upload/'~ article.image)}})">
+    </div>
+</div>
+{{article.text|raw}}
+{% endblock %}

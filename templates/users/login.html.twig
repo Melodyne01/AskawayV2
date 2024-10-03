@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+<section class="loginForm">
+    <form action="{{ path('login') }}" method="post">
+        <div class="formTitle">
+            <a href="{{path('home')}}"><img src="{{ asset('image/logo.png') }}" alt=""></a>
+        </div>
+        <div class="errorMessage">
+            {% if error %}
+            <div class="alert alert-danger">
+                {{error.messageKey | trans(error.messageData, 'security')}}
+            </div>
+            {% endif %}
+            {% for message in app.flashes("danger") %}
+            <div class="flashMessage" id="danger">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% for message in app.flashes("success") %}
+            <div class="flashMessage" id="success">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <input class="uk-input" type="text" placeholder="Email" aria-label="Not clickable icon" required name="_username">
+            </div>
+        </div>
+    
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                <input class="uk-input" type="password" aria-label="Not clickable icon" placeholder="Mot de passe" required name="_password">
+            </div>
+        </div>
+        <button class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">Valider</button>
+    </form>
+</section>
+{% endblock %}
