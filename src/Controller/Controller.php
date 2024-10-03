@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Twig\Environment;
 use App\Repository\ArticleRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,25 @@ class Controller extends AbstractController
         $this->articleRepo = $articleRepo;
     }
 
+    #[Route('/sitemap.xml', name: 'sitemap')]
+    public function sitemap(ArticleRepository $articleRepo, Environment $twig): Response
+    {
+        $articles = $articleRepo->findAll();
+        $urls = [];
+
+        foreach ($articles as $article){
+            array_push($urls, "https://askaway.fr/article/" . $article->getId() . "/" . $twig->getFilter('slugify')->getCallable()($article->getTitle()));
+        }
+        // Ajoutez ici d'autres URLs de votre projet Symfony en utilisant une boucle for ou en récupérant les données dynamiquement
+        $response = $this->render('sitemap.xml.twig', [
+            'urls' => $urls,
+        ]);
+
+        $response->headers->set('Content-Type', 'text/xml');
+
+        return $response;
+    }
+    
     #[Route('/', name: 'home')]
     public function index(Request $request): Response
     {
