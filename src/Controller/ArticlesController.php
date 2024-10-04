@@ -27,14 +27,14 @@ class ArticlesController extends AbstractController
     #[Route('/articles', name: 'app_articles')]
     public function articles(): Response
     {
-        $articles = $this->articleRepo->findAll();
+        $articles = $this->articleRepo->findArticlesByDesc();
 
         return $this->render('articles/index.html.twig', [
             "articles" => $articles
         ]);
     }
 
-    #[Route('/articles/create', name: 'app_article_create')]
+    #[Route('/admin/articles/create', name: 'app_article_create')]
     public function article_create(Request $request): Response
     {
         $article = new Article();
@@ -69,7 +69,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{id}/edit/', name: 'app_article_edit')]
+    #[Route('/admin/article/{id}/edit/', name: 'app_article_edit')]
     public function article_edit(Article $article, Request $request): Response
     {
         $form = $this->createForm(AddArticleType::class, $article);
@@ -111,7 +111,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{id}/delete', name: 'app_articles_delete')]
+    #[Route('/admin/article/{id}/delete', name: 'app_articles_delete')]
     public function article_delete(): Response
     {
         return $this->render('articles/index.html.twig', [

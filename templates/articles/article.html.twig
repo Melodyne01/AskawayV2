@@ -3,6 +3,30 @@
 {% block head %}
     <title>Askaway | {{article.title}}</title>
     <meta name="robots" content="index">
+    <meta name="date" content="{{article.createdAt|date('Y-m-d')}}" scheme="YYYY-MM-DD">
+    <meta name="description" content="{{article.introduction}}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{article.title}}",
+      "author": {
+        "@type": "Person",
+        "name": "Askaway Owner"
+      },
+      "datePublished": "{{article.createdAt|date('Y-m-d')}}",
+      "image": "{{article.image}}",
+      "description": "{{article.introduction}}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Askaway",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "URL_de_votre_logo.jpg"
+        }
+      }
+    }
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -13,10 +37,10 @@
         <li><span aria-current="page">{{article.title}}</span></li>
     </ul>
 </nav>
-
 <div class="uk-section-default uk-padding-remove-left uk-padding-remove-right uk-padding-remove-top uk-padding">
     <div class="uk-section uk-height-large uk-light uk-background-cover" style="background-image: url({{ asset('/upload/'~ article.image)}})">
     </div>
 </div>
 {{article.text|raw}}
+<p>Date de publication : {{article.createdAt|date('Y-m-d')}}</p>
 {% endblock %}

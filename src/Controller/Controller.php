@@ -42,7 +42,7 @@ class Controller extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request): Response
     {
-        $limit = 3;
+        $limit = 9;
         
         $articles = $this->articleRepo->findArticlesWithLimit($limit);
         return $this->render('/index.html.twig', [

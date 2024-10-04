@@ -65,4 +65,15 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function findArticlesByDesc()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->andWhere('a.online = :val')
+            ->setParameter('val', 1)
+            ->orderBy('a.id', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

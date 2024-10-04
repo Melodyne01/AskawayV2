@@ -86,7 +86,7 @@ class UsersController extends AbstractController
         ]);
     }
 
-    #[Route('user/userprofile/{id}', name: 'userprofile')]
+    #[Route('/admin/user/userprofile/{id}', name: 'userprofile')]
     public function userprofile(User $user): Response
     {
         if ($this->getUser()->getRoles()[0] == "ROLE_ADMIN"){

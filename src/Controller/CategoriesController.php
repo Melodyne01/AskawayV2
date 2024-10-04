@@ -24,7 +24,7 @@ class CategoriesController extends AbstractController
         $this->categoryRepo = $categoryRepo;
     }
     
-    #[Route('/categories', name: 'app_categories')]
+    #[Route('/admin/categories', name: 'app_categories')]
     public function index(): Response
     {
         return $this->render('categories/index.html.twig', [
@@ -32,7 +32,7 @@ class CategoriesController extends AbstractController
         ]);
     }
 
-    #[Route('/categories/create', name: 'app_category_create')]
+    #[Route('/admin/categories/create', name: 'app_category_create')]
     public function category_create(Request $request): Response
     {
         $category = new Category();
