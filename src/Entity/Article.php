@@ -40,6 +40,9 @@ class Article
     #[ORM\Column(type: Types::TEXT)]
     private ?string $introduction = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $keywords = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +140,18 @@ class Article
     public function setIntroduction(string $introduction): static
     {
         $this->introduction = $introduction;
+
+        return $this;
+    }
+
+    public function getKeywords(): ?string
+    {
+        return $this->keywords;
+    }
+
+    public function setKeywords(?string $keywords): static
+    {
+        $this->keywords = $keywords;
 
         return $this;
     }

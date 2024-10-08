@@ -86,7 +86,6 @@ class ArticlesController extends AbstractController
                     );
                 $article->setImage($fichier);
             }
-            $article->setCreatedAt(new DateTime('Europe/Paris'));
             $article->setUpdatedAt(new DateTime('Europe/Paris'));
 
             $this->manager->getManager()->persist($article);

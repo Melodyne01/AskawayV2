@@ -13,12 +13,9 @@
         <meta charset="UTF-8">
         {% block head %}
         <title>Askaway</title>
-        <meta name="description" content="Découvrez Askaway, votre guide pour le développement personnel et la gestion du temps. Apprenez des techniques efficaces pour améliorer votre productivité et atteindre un équilibre entre vie professionnelle et personnelle. Rejoignez-nous et boostez votre potentiel avec des conseils pratiques et adaptés à vos besoins.">
         {% endblock %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="{{ asset('image/favicon.ico') }}">
-        <meta name="keywords" content="développement personnel, gestion du temps, productivité, équilibre vie professionnelle et personnelle, techniques de productivité, méthode Pomodoro, bien-être, motivation, organisation, croissance personnelle" />
-        <meta name="author" content="Askaway Team">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}

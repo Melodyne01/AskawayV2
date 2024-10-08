@@ -51,6 +51,16 @@
                 </div>
             </div>
             <div class="uk-width-1-1">
+                {% if form_errors(form.keywords) %}
+                    <div class="formError">{{form_errors(form.keywords)}}</div>
+                {% endif %}
+                <div class="uk-margin">
+                    <div class="uk-inline uk-width-1-1">
+                        {{ form_widget(form.keywords) }}
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-1">
                 {% if form_errors(form.category) %}
                     <div class="formError">{{form_errors(form.category)}}</div>
                 {% endif %}

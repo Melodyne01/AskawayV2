@@ -1,28 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block head %}
-    <title>Askaway | {{article.title}}</title>
-    <meta name="robots" content="index">
+    <title>{{article.title|slice(0, 60)}} {{article.keywords}} | Askaway</title>
+    <link rel="canonical" href="https://askaway.fr/article/{{article.id}}/{{article.title|slugify}}" />
+    <meta name="robots" content="index, follow">
     <meta name="date" content="{{article.createdAt|date('Y-m-d')}}" scheme="YYYY-MM-DD">
-    <meta name="description" content="{{article.introduction}}">
+    <meta name="description" content="{{article.introduction|slice(0, 150)}}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{article.title}}">
+    <meta property="og:description" content="{{article.introduction}}">
+    <meta property="og:image" content="{{article.image}}">
+    <meta property="og:url" content="https://askaway.fr/article/{{article.id}}/{{article.title|slugify}}">
+    <meta property="og:site_name" content="Askaway">
+    <meta property="article:published_time" content="{{article.updatedAt|date('Y-m-d')}}">
+    <meta property="article:author" content="Askaway Owner">
+    <meta property="article:section" content="{{article.category}}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{article.title}}">
+    <meta name="twitter:description" content="{{article.introduction}}">
+    <meta name="twitter:image" content="{{article.image}}">
+    <meta name="twitter:url" content="https://askaway.fr/article/{{article.id}}/{{article.title|slugify}}">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://askaway.fr/{{article.id}}/{{article.title|slugify}}"
+      },
       "headline": "{{article.title}}",
       "author": {
         "@type": "Person",
         "name": "Askaway Owner"
       },
       "datePublished": "{{article.createdAt|date('Y-m-d')}}",
+      "dateModified": "{{article.updatedAt|date('Y-m-d')}}",
       "image": "{{article.image}}",
       "description": "{{article.introduction}}",
+      "keywords": "{{article.keywords}}",
+      "articleBody": "{{article.text}}"
       "publisher": {
         "@type": "Organization",
         "name": "Askaway",
         "logo": {
           "@type": "ImageObject",
-          "url": "URL_de_votre_logo.jpg"
+          "url": "{{article.image}}"
         }
       }
     }
@@ -42,5 +66,5 @@
     </div>
 </div>
 {{article.text|raw}}
-<p>Date de publication : {{article.createdAt|date('Y-m-d')}}</p>
+<p>Date de publication : {{article.updatedAt|date('Y-m-d')}}</p>
 {% endblock %}

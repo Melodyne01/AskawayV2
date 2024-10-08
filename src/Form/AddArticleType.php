@@ -19,8 +19,8 @@ class AddArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input']))
-            ->add('introduction', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input']))
+            ->add('title', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input', 'placeholder' => 'Titre']))
+            ->add('introduction', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input', 'placeholder' => 'Introduction']))
             ->add('online', ChoiceType::class, [
                 'label' => false,
                 'choices'  => [
@@ -33,11 +33,15 @@ class AddArticleType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'label' => 'Upload Image',
+                'required' => false,
                 'mapped' => false,
                 'attr' => ['class' => 'uk-input'],
             ])
             ->add('text', TextAreaType::class, [
-                'attr' => ['class' => 'uk-textarea'],
+                'attr' => ['class' => 'uk-textarea', 'placeholder' => 'Texte'],
+            ])
+            ->add('keywords', TextType::class, [
+                'attr' => ['class' => 'uk-textarea', 'placeholder' => 'Mots-clés'],
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
-
+{% block head %}
+<meta name="description" content="Découvrez Askaway, votre guide pour le développement personnel et la gestion du temps. Apprenez des techniques efficaces pour améliorer votre productivité et atteindre un équilibre entre vie professionnelle et personnelle. Rejoignez-nous et boostez votre potentiel avec des conseils pratiques et adaptés à vos besoins.">
+{% endblock %}
 {% block body %}
 
 <section class="uk-section">
     <h2>Derniers Articles</h2>
-    
     <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
         {% for article in articles %}
         <a href="{{path('app_article', {id: article.id, slug: article.title|slugify})}}">

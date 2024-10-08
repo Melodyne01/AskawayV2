@@ -13,7 +13,7 @@ class AddCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input']))
+            ->add('name', TextType::class, array('attr' => ['label' => false, 'class' => 'uk-input', 'placeholder' => 'Nom']))
         ;
     }
 
